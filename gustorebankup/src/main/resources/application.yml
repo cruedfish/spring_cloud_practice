@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: eurekaserver
+  profiles:   ## application-{}.yml
+    #active: $spring.profiles.active$
+    active: dev
+    ##默认加载application-dev.yml文件，可以采用$spring.profiles.active$这种方式用maven多环境打包来定义是dev 还是 pro
+

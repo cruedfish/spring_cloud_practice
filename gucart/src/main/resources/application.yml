@@ -1,0 +1,71 @@
+spring:
+  datasource:
+      url: jdbc:mysql://39.107.90.7:3306/mysql?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: Mysqldba1!
+      driver-class-name: com.mysql.jdbc.Driver
+      platform: mysql
+      type: com.alibaba.druid.pool.DruidDataSource
+      # 下面为连接池的补充设置，应用到上面所有数据源中
+      # 初始化大小，最小，最大
+      initialSize: 1
+      minIdle: 3
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 30000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters: stat,wall,slf4j
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      # 合并多个DruidDataSource的监控数据
+      #useGlobalDataSourceStat: true
+  thymeleaf:
+    prefix: classpath:/templates/
+    model : HTML5
+    encoding: UTF-8
+    suffix: .html
+    servlet:
+      content-type: text/html
+    cache: false
+
+
+
+mybatis:
+    type-aliases-package: com.giveu.cart.pojo
+    mapper-locations: classpath:mapper/*.xml
+
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+# swagger2
+swagger2.package: cn.binux.cart.service
+
+# Redis
+redisKey:
+  # 缓存时间 默认半小时
+  expire_time: 1800
+  prefix:
+# 购物车
+    cart_info_profix: 'CART_INFO:'
+# 商品
+    item_info_profix: 'ITEM_INFO:'
+    item_info_base_suffix: ':BASE'
+    item_info_desc_suffix: ':DESC'
+    # Redis 缓存时间 默认3天
+    redis_cart_expire_time: 259200
+

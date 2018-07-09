@@ -1,0 +1,19 @@
+spring:
+ application:
+   name: item
+server:
+  port: ${service.server.port:8081}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${eureka.serviceUrl:http://127.0.0.1:7001/eureka/}
+
+hystrix:
+ command:
+  default:
+   execution:
+    timeout:
+     enabled: true
+    isolation:
+     thread:
+      timeoutInMilliseconds: 3000
