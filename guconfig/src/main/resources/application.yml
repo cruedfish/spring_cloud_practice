@@ -1,0 +1,14 @@
+spring:
+  application:
+    name:  config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/cruedfish/guConf/
+          search-paths: central/gustore/
+          username: 1239128278@qq.com
+          password: yinhai19941219
+server:
+  port: 7004
+

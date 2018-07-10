@@ -8,12 +8,6 @@ eureka:
     serviceUrl:
       defaultZone: ${eureka.serviceUrl:http://127.0.0.1:7001/eureka/}
 
-hystrix:
- command:
-  default:
-   execution:
-    timeout:
-     enabled: true
-    isolation:
-     thread:
-      timeoutInMilliseconds: 3000
+feign:
+  hystix:
+    enabled: true

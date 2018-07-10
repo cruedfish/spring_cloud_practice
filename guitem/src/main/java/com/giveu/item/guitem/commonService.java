@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Descripation:
  * @Date: Created in ${time} ${Date}
  */
-@FeignClient(name ="store",fallback = commonServiceFallback.class)
+@FeignClient(name ="cart",fallback = commonServiceFallback.class)
 public interface commonService {
     @RequestMapping("/feignTest")
     String feignTest();
