@@ -1,15 +1,20 @@
 spring:
  application:
    name: cart
-
-
+ cloud:
+  config:
+    profile: prd
+    uri: http://localhost:7005/
+ http:
+  encoding:
+    charset: UTF-8
+    force: true
+    enabled: true
 
 server:
   port: ${service.server.port:8514}
-
-management:
-  security:
-    enabled: false
+  tomcat:
+    uri-encoding: UTF-8
 
 eureka:
   instance:

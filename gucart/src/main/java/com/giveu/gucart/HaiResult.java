@@ -38,4 +38,11 @@ public class HaiResult {
         res.put(JsendNorm.MSG_KEY, msg);
         return res;
     }
+    public static Map<String, Object> buildFail(String code, String msg, Object obj) {
+        Map<String, Object> res = new LinkedHashMap<String, Object>();
+        res.put(JsendNorm.MSG_KEY, msg);
+        res.put(JsendNorm.STATUS_KEY, JsendNorm.Status.FAIL.toString());
+        res.put(JsendNorm.DATA_KEY, obj);
+        return res;
+    }
 }

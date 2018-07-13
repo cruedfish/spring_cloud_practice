@@ -9,10 +9,18 @@ spring:
           search-paths: central
           username: 1239128278@qq.com
           password: yinhai19941219
+  http:
+   encoding:
+     charset: UTF-8
+     force: true
+     enabled: true
 server:
-  port: 7004
-
+  port: ${service.server.port:7005}
+  tomcat:
+    uri-encoding: UTF-8
 eureka:
+  instance:
+    status-page-url: http://localhost:${server.port}/swagger-ui.html
   client:
-    service-url:
-      defaultZone: http://eureka1:7001/erureka/
+    serviceUrl:
+      defaultZone: ${eureka.serviceUrl:http://127.0.0.1:7001/eureka/}
