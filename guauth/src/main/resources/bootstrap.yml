@@ -1,0 +1,26 @@
+spring:
+ application:
+   name: auth
+ cloud:
+  config:
+    profile: prd
+    uri: http://localhost:7006/
+
+http:
+  encoding:
+    charset: UTF-8
+    force: true
+    enabled: true
+
+server:
+  port: ${service.server.port:7006}
+  tomcat:
+    uri-encoding: UTF-8
+
+eureka:
+  instance:
+    status-page-url: http://localhost:${server.port}/swagger-ui.html
+  client:
+    serviceUrl:
+      defaultZone: ${eureka.serviceUrl:http://127.0.0.1:7001/eureka/}
+

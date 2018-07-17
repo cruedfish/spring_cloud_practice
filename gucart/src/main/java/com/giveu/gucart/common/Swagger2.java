@@ -10,25 +10,33 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@EnableSwagger2  //启动Swagger2
+/**
+ * @Author: YinHai
+ * @Descripation:
+ * @Date: Created in ${time} ${Date}
+ */
 @Configuration
-public class SwaggerConfig {
-
+@EnableSwagger2
+public class Swagger2 {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.giveu.gucart")) //扫描文档注解的包路径
+                // 指定controller存放的目录路径
+                .apis(RequestHandlerSelectors.basePackage("com.giveu.gucart.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("测试") //标题
-                .description("Create by Alan Di")
-                .version("1.0")
+                // 文档标题
+                .title("springcloud-yh")
+                // 文档描述
+                .description("https://github.com/curedfish")
+                .termsOfServiceUrl("https://github.com/curedfish")
+                .version("v1")
                 .build();
     }
 }

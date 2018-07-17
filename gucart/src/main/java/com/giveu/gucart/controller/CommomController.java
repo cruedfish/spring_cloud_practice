@@ -18,18 +18,19 @@ import java.util.Map;
  * @Descripation:
  * @Date: Created in ${time} ${Date}
  */
-@Api(description="常态控制器")
 @RestController
 public class CommomController {
 
     @Value("${goodName1}")
     private String goodName;
+
+    @ApiOperation(value="创建条目2")
     @RequestMapping(value = "/cartPage", method= RequestMethod.GET)
     public String  redirectIndex(){
         return "cart";
     }
 
-    @ApiOperation(tags = "获取所有角色信息" ,value="检验config")
+    @ApiOperation(value="创建条目")
     @RequestMapping(value = "/aaa" ,method=RequestMethod.GET ,produces="application/json;charset=UTF-8")
     @ResponseBody
     public Map<String, Object> FeignTest(){

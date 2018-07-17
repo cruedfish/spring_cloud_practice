@@ -10,7 +10,8 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 @EnableDiscoveryClient
 public class GustorebankupApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 		SpringApplication.run(GustorebankupApplication.class, args);
 	}
 }
