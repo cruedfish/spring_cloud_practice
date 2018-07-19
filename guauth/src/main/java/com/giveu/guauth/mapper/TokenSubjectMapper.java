@@ -1,8 +1,6 @@
 package com.giveu.guauth.mapper;
 
-
-import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.giveu.guauth.entity.User;
+import com.giveu.guauth.entity.TokenSubject;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -11,7 +9,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @Date: Created in ${time} ${Date}
  */
 @Mapper
-public interface UserMapper extends BaseMapper<User> {
-
-
+public interface TokenSubjectMapper extends SuperMapper<TokenSubject>{
 }

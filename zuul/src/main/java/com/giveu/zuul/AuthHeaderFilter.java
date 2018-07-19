@@ -1,12 +1,16 @@
 package com.giveu.zuul;
 
 import com.netflix.zuul.ZuulFilter;
+import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 import java.security.Key;
 
 /**
@@ -14,6 +18,7 @@ import java.security.Key;
  * @Descripation:
  * @Date: Created in ${time} ${Date}
  */
+@Component
 public class AuthHeaderFilter extends ZuulFilter {
 
     private final Logger logger = Logger.getLogger(AuthHeaderFilter.class);
@@ -34,17 +39,19 @@ public class AuthHeaderFilter extends ZuulFilter {
 
     @Override
     public int filterOrder() {
-        return 1;
+        return 2;
     }
 
     @Override
     public Object run() throws ZuulException {
-        Key key = MacProvider.generateKey();
-
-        String compactJws = Jwts.builder()
-                .setSubject("Joe")
-                .signWith(SignatureAlgorithm.HS512, key)
-                .compact();
+        RequestContext rtx = RequestContext.getCurrentContext();
+        HttpServletRequest request = rtx.getRequest();
+        String token = request.getHeader("Authorization");
+        if(token == null || token.length() == 0 ){
+            token = System.getProperty("hai.store.token");
+            logger.info("获取的token为*********************************************"+token);
+            rtx.addOriginResponseHeader("Authorization",token);
+        }
         return  null;
     }
 }

@@ -40,15 +40,15 @@ public class IpFilter extends ZuulFilter {
 
     @Override
     public Object run() throws ZuulException {
-        RequestContext ctx = RequestContext.getCurrentContext();
-        String ip = com.giveu.zuul.IPUtil.getIpAddr(ctx.getRequest());
-        if (StringUtils.isNotBlank(ip)){
-            ctx.set("isSuccess", false);
-        ctx.setSendZuulResponse(false);
-        Map<String,Object> data = HaiResult.buildFail("-1","非法请求",null);
-        ctx.setResponseBody(JsonUtil.write2JsonStr(data));
-        ctx.getResponse().setContentType("application/json; charset=utf-8");
-    }
+//        RequestContext ctx = RequestContext.getCurrentContext();
+//        String ip = com.giveu.zuul.IPUtil.getIpAddr(ctx.getRequest());
+//        if (StringUtils.isNotBlank(ip)){
+//            ctx.set("isSuccess", false);
+//        ctx.setSendZuulResponse(false);
+//        Map<String,Object> data = HaiResult.buildFail("-1","非法请求",null);
+//        ctx.setResponseBody(JsonUtil.write2JsonStr(data));
+//        ctx.getResponse().setContentType("application/json; charset=utf-8");
+//    }
         return null;
     }
 

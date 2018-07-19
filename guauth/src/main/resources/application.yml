@@ -42,11 +42,6 @@ spring:
 
 
 
-mybatis-plus:
-  mapper-locations: classpath:/mapper/*Mapper.xml
-  typeAliasesPackage: com.giveu.guauth.entity
-
-
 pagehelper:
     helperDialect: mysql
     reasonable: true
