@@ -18,7 +18,6 @@ import java.util.concurrent.Semaphore;
  * @Date: Created in ${time} ${Date}
  */
 @Component
-@EnableScheduling
 public class TokenScheduledTask {
 
     @Autowired

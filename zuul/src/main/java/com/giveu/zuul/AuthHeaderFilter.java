@@ -1,12 +1,11 @@
 package com.giveu.zuul;
 
+import com.giveu.guauth.mapper.UserMapper;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.impl.crypto.MacProvider;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +20,11 @@ import java.security.Key;
 @Component
 public class AuthHeaderFilter extends ZuulFilter {
 
-    private final Logger logger = Logger.getLogger(AuthHeaderFilter.class);
-    
+    @Autowired
+    private UserMapper userMapper;
+
+    private final Logger logger = Logger.getLogger(ZuulApplication.class);
+
     public AuthHeaderFilter() {
         super();
     }
@@ -48,6 +50,7 @@ public class AuthHeaderFilter extends ZuulFilter {
         HttpServletRequest request = rtx.getRequest();
         String token = request.getHeader("Authorization");
         if(token == null || token.length() == 0 ){
+            userMapper.selectById()
             token = System.getProperty("hai.store.token");
             logger.info("获取的token为*********************************************"+token);
             rtx.addOriginResponseHeader("Authorization",token);

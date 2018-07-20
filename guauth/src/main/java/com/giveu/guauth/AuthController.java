@@ -22,7 +22,6 @@ import java.util.Map;
  * @Date: Created in ${time} ${Date}
  */
 @RestController
-@RequestMapping(value = "authorization")
 public class AuthController {
     @Autowired
     private UserMapper userMapper;
@@ -38,8 +37,9 @@ public class AuthController {
             return 0;
         }
     };
+
     @SuppressWarnings(value = "unchecked")
-    @RequestMapping(value = "/getToken",consumes = MediaType.APPLICATION_JSON_VALUE ,method = RequestMethod.POST)
+    @RequestMapping(value = "/getToken" ,method = RequestMethod.POST)
     @ResponseBody
     public Map<String,Object> getToken(){
         int sid = threadLocal.get();
