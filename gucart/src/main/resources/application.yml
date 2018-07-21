@@ -69,3 +69,4 @@ redisKey:
     # Redis 缓存时间 默认3天
     redis_cart_expire_time: 259200
 
+goodName: shubiao

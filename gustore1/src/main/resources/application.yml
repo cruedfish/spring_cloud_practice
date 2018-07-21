@@ -1,0 +1,12 @@
+redis:
+  hostname: 39.107.90.7
+  password: yinhai
+
+spring:
+ application:
+   name: gustore
+server:
+  port: ${service.server.port:8999}
+
+yinhai:
+  test: test

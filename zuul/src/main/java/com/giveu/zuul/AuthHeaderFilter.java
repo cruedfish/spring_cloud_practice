@@ -49,6 +49,7 @@ public class AuthHeaderFilter extends ZuulFilter {
         RequestContext rtx = RequestContext.getCurrentContext();
         HttpServletRequest request = rtx.getRequest();
         String token = request.getHeader("Authorization");
+
         if(token == null || token.length() == 0 ){
             userMapper.selectById()
             token = System.getProperty("hai.store.token");

@@ -24,10 +24,13 @@ public class CommomController {
     @Value("${goodName1}")
     private String goodName;
 
+    @Value("${yinhai.test}")
+    private String yinhai;
+
     @ApiOperation(value="创建条目2")
     @RequestMapping(value = "/cartPage", method= RequestMethod.GET)
     public String  redirectIndex(){
-        return "cart";
+        return yinhai;
     }
 
     @ApiOperation(value="创建条目")
