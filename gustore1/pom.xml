@@ -16,6 +16,7 @@
         <module>../guitem</module>
         <module>../zuul</module>
         <module>../guauth</module>
+        <module>../gucommon</module>
     </modules>
 
     <name>gustore1</name>
@@ -79,7 +80,19 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.9.6</version>
         </dependency>
-            <!-- swagger2 -->
+        <!-- goole序列化工具 -->
+        <dependency>
+            <groupId>com.dyuproject.protostuff</groupId>
+            <artifactId>protostuff-core</artifactId>
+            <version>1.0.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dyuproject.protostuff</groupId>
+            <artifactId>protostuff-runtime</artifactId>
+            <version>1.0.8</version>
+        </dependency>
+
+        <!-- swagger2 -->
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger2</artifactId>
@@ -153,16 +166,6 @@
                 </configuration>
             </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.properties</include>
-                    <include>**/*.yml</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-        </resources>
     </build>
 
     <repositories>

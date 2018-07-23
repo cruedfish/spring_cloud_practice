@@ -51,7 +51,7 @@ public class AuthHeaderFilter extends ZuulFilter {
         String token = request.getHeader("Authorization");
 
         if(token == null || token.length() == 0 ){
-            userMapper.selectById()
+            userMapper.selectById(1);
             token = System.getProperty("hai.store.token");
             logger.info("获取的token为*********************************************"+token);
             rtx.addOriginResponseHeader("Authorization",token);

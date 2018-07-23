@@ -1,0 +1,18 @@
+spring:
+  redis:
+    host: 39.107.90.7
+    port: 6379
+    password: yinhai
+  application:
+    name: common
+server:
+  port: 7878
+
+
+eureka:
+  instance:
+    status-page-url: http://localhost:${server.port}/swagger-ui.html
+  client:
+    serviceUrl:
+      defaultZone: ${eureka.serviceUrl:http://127.0.0.1:7001/eureka/}
+

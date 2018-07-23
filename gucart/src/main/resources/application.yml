@@ -40,7 +40,6 @@ spring:
     cache: false
 
 
-
 mybatis:
     type-aliases-package: com.giveu.cart.pojo
     mapper-locations: classpath:mapper/*.xml

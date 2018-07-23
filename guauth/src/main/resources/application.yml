@@ -67,3 +67,5 @@ redisKey:
 
     redis_cart_expire_time: 259200
 
+yinhai:
+  test:  test

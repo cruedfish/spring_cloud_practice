@@ -2,8 +2,10 @@ package com.giveu.gucart.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.giveu.gucart.HaiResult;
+import com.haistore.redis.JedisClientSingle;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +23,9 @@ import java.util.Map;
 @RestController
 public class CommomController {
 
-    @Value("${goodName1}")
+    private JedisClientSingle jedisClientSingle = new JedisClientSingle();
+
+    @Value("${goodName}")
     private String goodName;
 
     @Value("${yinhai.test}")
@@ -30,6 +34,7 @@ public class CommomController {
     @ApiOperation(value="创建条目2")
     @RequestMapping(value = "/cartPage", method= RequestMethod.GET)
     public String  redirectIndex(){
+        jedisClientSingle.set("token","test1",60*60*2);
         return yinhai;
     }
 
