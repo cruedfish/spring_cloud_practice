@@ -1,4 +1,4 @@
-package com.giveu.gucommon;
+package com.giveu.guauthserver;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +19,8 @@ public class CommonController {
     JedisClient jedisClient;
     @RequestMapping(value = "test")
     public String getTest1(){
-//        String a = jedisClient.get("test1");
+        jedisClient.set("yinhai","luoye",10000);
+        String a = jedisClient.get("yinhai");
         return  "3";
     }
 

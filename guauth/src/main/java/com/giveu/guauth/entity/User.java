@@ -35,6 +35,8 @@ public class User extends Model<User> {
     @TableField("sex")
     private String sex;
 
+    @TableField("salt")
+    private String salt;
     @Override
     public String toString() {
         return "User{" +
@@ -93,5 +95,13 @@ public class User extends Model<User> {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 }

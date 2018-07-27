@@ -1,9 +1,8 @@
-package com.giveu.gucommon;
+package com.giveu.guauthserver;
 
 
 import com.haistore.redis.ProtostuffSerializer;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.*;
 import redis.clients.jedis.params.geo.GeoRadiusParam;
@@ -13,14 +12,12 @@ import java.util.List;
 @Component
 public class JedisClient {
 
-	@Value("${spring.redis.host}")
-	private String host;
 
-	@Value("${spring.redis.port}")
-	private int port;
+	private String host = "39.107.90.7";
 
-	@Value("${spring.redis.password}")
-	private String password;
+	private int port = 6379;
+
+	private String password="yinhai";
 
 	protected Logger logger = Logger.getLogger(this.getClass());
 
@@ -231,6 +228,9 @@ public class JedisClient {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+		finally {
+			closeResource(jedis);
+		}
 		return true;
 	}
 
@@ -241,6 +241,19 @@ public class JedisClient {
 		} catch (Exception e) {
 			logger.error("JedisServicecloseResource error.", e);
 		}
+		finally {
+			closeResource(jedis);
+		}
 	}
-
+	public synchronized  void lpush(String key, String... strings) {
+		try {
+			jedis.lpush(key, strings);
+			jedis.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResource(jedis);
+		}
+	}
 }
