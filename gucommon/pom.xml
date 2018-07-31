@@ -8,8 +8,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<modules>
-		<module>./guauthclient</module>
-		<module>./guauthserver</module>
+		<module>guauthclient</module>
+		<module>guauthserver</module>
 	</modules>
 
 	<name>gucommon</name>
@@ -39,14 +39,19 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-spring-boot-starter</artifactId>
-			<version>1.4.0</version>
-		</dependency>
-		<dependency>
 			<groupId>com.giveu</groupId>
 			<artifactId>guauth</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.giveu</groupId>
+			<artifactId>gucart</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring-boot-starter</artifactId>
+			<version>1.4.0</version>
 		</dependency>
 	</dependencies>
 

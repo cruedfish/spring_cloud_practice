@@ -1,6 +1,6 @@
 spring:
   application:
-    name: authclient
+    name: authserver
   redis:
     host: 39.107.90.7
     password: yinhai
@@ -11,7 +11,7 @@ spring:
       uri: http://localhost:7005/
 
 server:
-   port: 7008
+   port: 7009
 
 
 eureka:

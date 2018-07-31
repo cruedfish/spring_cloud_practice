@@ -1,6 +1,6 @@
 package com.giveu.guauthclient.config;
 
-import com.giveu.guauth.mapper.UserMapper;
+import com.giveu.guauthclient.filter.UserAuthFilter;
 import com.giveu.guauthclient.shiro.MyShiroRealm;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -13,6 +13,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
+import javax.servlet.Filter;
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * <P></P>
@@ -24,6 +28,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
  */
 @Configuration
 public class ShiroConfig {
+
 
     /**
      * 凭证匹配器
@@ -79,10 +84,22 @@ public class ShiroConfig {
         return securityManager;
     }
 
-
+    @Bean
+    public UserAuthFilter getUserAuthFilter(){
+        return new UserAuthFilter();
+    }
     @Bean(name = "shiroFilter")
     public ShiroFilterFactoryBean shiroFilterFactoryBean(DefaultWebSecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+        HashMap<String,Filter> hashMap=new HashMap<String,Filter>();
+        hashMap.put("kickout",getUserAuthFilter());
+        shiroFilterFactoryBean.setFilters(hashMap);
+        Map<String,String> filterMap = new HashMap<String,String>();
+        filterMap.put("/**", "kickout,authc");
+        filterMap.put("/*/*", "kickout,authc");
+        filterMap.put("/*/*/*", "authc");
+        filterMap.put("/*/*/*/**", "authc");
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         return shiroFilterFactoryBean;
     }

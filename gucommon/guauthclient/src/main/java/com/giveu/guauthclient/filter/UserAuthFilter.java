@@ -6,6 +6,7 @@ import org.apache.shiro.web.filter.authc.AuthenticationFilter;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -15,6 +16,7 @@ import javax.servlet.ServletResponse;
  * @Descripation:
  * @Date: Created in ${time} ${Date}
  */
+@Component
 public class UserAuthFilter extends AuthenticationFilter{
     @Value("${sso.server.uri}")
     private String ssoUri;

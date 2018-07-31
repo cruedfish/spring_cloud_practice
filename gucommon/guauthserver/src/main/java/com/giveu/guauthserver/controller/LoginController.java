@@ -1,7 +1,7 @@
 package com.giveu.guauthserver.controller;
 
 import com.giveu.guauthclient.Session.HaiSession;
-import com.giveu.guauthserver.JedisClient;
+import com.giveu.guauthclient.util.JedisClient;
 import com.giveu.guauthserver.service.LoginService;
 import com.haistore.redis.HaiResult;
 import io.swagger.annotations.Api;
@@ -19,10 +19,10 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -33,7 +33,7 @@ import java.util.UUID;
  * @Descripation:
  * @Date: Created in ${time} ${Date}
  */
-@RestController
+@Controller
 @RequestMapping(value = "SSO")
 @Api(value = "单点登录管理" , description = "单点登录管理")
 public class LoginController {
@@ -81,7 +81,7 @@ public class LoginController {
             logger.info("认证中心帐号通过，带code回跳：{}"+ backurl);
             return "redirect:" + backurl;
         }
-        return "/sso/login.jsp";
+        return "redirect:/template/login.html";
     }
 
 

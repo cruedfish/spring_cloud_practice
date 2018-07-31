@@ -2,7 +2,6 @@ package com.giveu.guauthclient.Session;
 
 
 import com.giveu.guauthclient.util.SerializableUtil;
-import com.haistore.redis.JedisClient;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.ValidatingSession;
 import org.apache.shiro.session.mgt.eis.CachingSessionDAO;
@@ -10,7 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-
+import org.springframework.stereotype.Component;
+import com.giveu.guauthclient.util.JedisClient;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,6 +20,7 @@ import java.util.Map;
  * @Descripation:
  * @Date: Created in ${time} ${Date}
  */
+@Component
 public class HaiSessionDao extends CachingSessionDAO{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HaiSessionDao.class);
