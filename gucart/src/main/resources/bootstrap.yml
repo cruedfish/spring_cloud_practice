@@ -4,7 +4,10 @@ spring:
  cloud:
   config:
     profile: prd
-    uri: http://localhost:7005/
+    discovery:
+      service-id: guconfig
+      enabled: true
+    fail-fast: true
  http:
   encoding:
     charset: UTF-8

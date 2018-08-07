@@ -1,15 +1,22 @@
 spring:
   application:
     name: authclient
+  cloud:
+    config:
+      profile: prd
+      discovery:
+        service-id: guconfig
+        enabled: true
+      fail-fast: true
   redis:
     host: 39.107.90.7
     password: yinhai
     pool: 6379
-  cloud:
-    config:
-      profile: prd
-      uri: http://localhost:7005/
-
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
 server:
    port: 7008
 
@@ -20,3 +27,12 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${eureka.serviceUrl:http://127.0.0.1:7001/eureka/}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+  endpoint:
+    health:
+      show-details: always

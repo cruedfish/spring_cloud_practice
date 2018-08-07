@@ -1,5 +1,6 @@
 package com.giveu.guauthserver;
 
+import com.giveu.guauthclient.config.ShiroConfig;
 import com.giveu.guauthclient.filter.UserAuthFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,12 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages = {"com.giveu.guauthclient","com.giveu.guauth","com.giveu.guauthserver"})
 public class GuauthserverApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(GuauthserverApplication.class, args);
-	}
-	@Bean
-	public UserAuthFilter getAuthFilter(){
-		return new UserAuthFilter();
 	}
 }

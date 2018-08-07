@@ -6,11 +6,12 @@
 	<groupId>com.giveu</groupId>
 	<artifactId>gucommon</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 	<modules>
 		<module>guauthclient</module>
 		<module>guauthserver</module>
-	</modules>
+        <module>../guadmin</module>
+    </modules>
 
 	<name>gucommon</name>
 	<description>Demo project for Spring Boot</description>
@@ -51,6 +52,13 @@
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-spring-boot-starter</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+
+		<!--shiro添加ehcache缓存 -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
 			<version>1.4.0</version>
 		</dependency>
 	</dependencies>

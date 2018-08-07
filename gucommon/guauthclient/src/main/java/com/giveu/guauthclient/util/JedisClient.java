@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 import redis.clients.jedis.*;
 import redis.clients.jedis.params.geo.GeoRadiusParam;
 
+import java.util.ArrayList;
 import java.util.List;
-
 @Component
 public class JedisClient {
 
@@ -73,6 +73,18 @@ public class JedisClient {
 		return result;
 	}
 
+	public Long expire(String key ,int seconds){
+		Long Result = null;
+		try {
+			 Result = jedis.expire(protostuffSerializer.serialize(key), seconds);
+		}catch (Exception ex) {
+			ex.printStackTrace();
+			logger.error("JedisService.expire 出错[key=" + key + "]", ex);
+		} finally {
+			closeResource(jedis);
+		}
+		return Result;
+	}
 
 	public String get(String key) {
 		// TODO Auto-generated method stub
@@ -207,47 +219,10 @@ public class JedisClient {
 		return jedis.get(key);
 	}
 
-	/**
-	 * 方法名称：lock <br>
-	 * 描述： 如为第一次，则加上锁,每次调用值会自动加一<br>
-	 * 作者：100196 <br>
-	 * 修改日期：2017年7月31日下午3:56:18
-	 *
-	 * @param key
-	 * @param seconds
-	 * @return
-	 */
-
-	public boolean lock(String key, int seconds) {
-		try {
-			// 如为第一次，则加上锁，返回false,10秒
-			if (jedis.incr(key) == 1) {
-				jedis.expire(key, seconds);
-				return false;
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		finally {
-			closeResource(jedis);
-		}
-		return true;
-	}
-
-
-	public void unlock(String key) {
-		try {
-			jedis.del(key);
-		} catch (Exception e) {
-			logger.error("JedisServicecloseResource error.", e);
-		}
-		finally {
-			closeResource(jedis);
-		}
-	}
 	public synchronized  void lpush(String key, String... strings) {
+        Long responseResult = null;
 		try {
-			jedis.lpush(key, strings);
+			responseResult = jedis.lpush(protostuffSerializer.serialize(key),protostuffSerializer.serialize(strings) );
 			jedis.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -256,4 +231,56 @@ public class JedisClient {
 			closeResource(jedis);
 		}
 	}
+
+    //以下皆为jedis操作list集合数据的办法
+
+	public synchronized String lpop(String key){
+		String response = "";
+		try{
+            byte[] result = jedis.lpop(protostuffSerializer.serialize(key));
+            if (result == null) {
+                return "";
+            }
+            response = protostuffSerializer.deserialize(result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResource(jedis);
+		}
+		return response;
+	}
+	public synchronized String rpop(String key){
+        String response = "";
+		try{
+            byte[] result = jedis.rpop(protostuffSerializer.serialize(key));
+            if (result == null) {
+                return "";
+            }
+            response = protostuffSerializer.deserialize(result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResource(jedis);
+		}
+		return response;
+	}
+    public  List<String> lrang(String key , int startIndex ,int endIndex){
+		List<byte[]> result = new ArrayList<>();
+		List<String > response = new ArrayList<>();
+		try{
+			result = jedis.lrange(protostuffSerializer.serialize(key),startIndex,endIndex);
+			for (byte[] res :result){
+                response.add(protostuffSerializer.deserialize(res));
+            }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResource(jedis);
+		}
+		return response;
+	}
+
 }

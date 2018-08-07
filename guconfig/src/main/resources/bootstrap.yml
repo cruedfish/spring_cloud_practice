@@ -1,0 +1,8 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+  endpoint:
+    health:
+      show-details: always

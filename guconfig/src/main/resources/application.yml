@@ -9,11 +9,14 @@ spring:
           search-paths: central
           username: 1239128278@qq.com
           password: yinhai19941219
+    bus:
+      enabled: true
   http:
    encoding:
      charset: UTF-8
      force: true
      enabled: true
+
 server:
   port: ${service.server.port:7005}
   tomcat:
@@ -24,3 +27,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${eureka.serviceUrl:http://127.0.0.1:7001/eureka/}
+
+
+

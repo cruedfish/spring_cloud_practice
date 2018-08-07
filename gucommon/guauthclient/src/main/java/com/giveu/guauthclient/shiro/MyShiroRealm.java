@@ -2,6 +2,7 @@ package com.giveu.guauthclient.shiro;
 
 import com.giveu.guauth.entity.User;
 import com.giveu.guauth.mapper.UserMapper;
+import com.haistore.redis.HaiResult;
 import com.haistore.redis.MD5Util;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -10,6 +11,8 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.math.BigInteger;
 
 /**
  * @Author: YinHai
@@ -54,14 +57,22 @@ public class MyShiroRealm extends AuthorizingRealm {
     @Override
     protected org.apache.shiro.authc.AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         //获取用户账号
-        String username = token.getPrincipal().toString();
+        BigInteger username = BigInteger.valueOf(Long.valueOf(token.getPrincipal().toString())) ;
 
-        String password = token.getCredentials().toString();
+        String password = new String((char[]) token.getCredentials());
         User user = userMapper.selectById(username);
-        if(null == user){
+
+        if(user == null ){
             throw  new UnknownAccountException();
         }
-        if(user.getPassword() != MD5Util.md5(password+""+user.getSalt())){
+        String md5pass= "";
+        try {
+             md5pass =  MD5Util.md5LowerCase(password,user.getSalt());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(!user.getPassword() .equals(md5pass) ){
             throw new IncorrectCredentialsException();
         }
         return new SimpleAuthenticationInfo(username, password, getName());

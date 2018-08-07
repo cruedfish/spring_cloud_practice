@@ -25,7 +25,7 @@ public class CommomController {
 
     private JedisClientSingle jedisClientSingle = new JedisClientSingle();
 
-    @Value("${goodName}")
+    @Value("${goodName1}")
     private String goodName;
 
     @Value("${yinhai.test}")

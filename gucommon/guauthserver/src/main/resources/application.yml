@@ -36,7 +36,15 @@ spring:
     servlet:
       content-type: text/html
     cache: false
-
+  cloud:
+    bus:
+      enabled: true
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: yinhai
+    password: yinhai
 mybatis:
     type-aliases-package: com.giveu.cart.pojo
     mapper-locations: classpath:mapper/*.xml
+

@@ -7,9 +7,11 @@ spring:
     pool: 6379
   cloud:
     config:
+      discovery:
+        enabled: true
+        service-id: guconfig
       profile: prd
-      uri: http://localhost:7005/
-
+      fail-fast: true
 server:
    port: 7009
 
@@ -20,3 +22,12 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${eureka.serviceUrl:http://127.0.0.1:7001/eureka/}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+  endpoint:
+    health:
+      show-details: always

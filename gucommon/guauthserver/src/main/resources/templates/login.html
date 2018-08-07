@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<link type=""/>
+</head>
+<body id="login">
+<form>
+    <fieldset style="border:none">
+        <legend style="display:none">登录表单</legend>
+        <p><label for="name">账号: </label><input type="text" id="name" th:text="${hai_username}" /></p>
+        <p><label for="pw">密码: </label><input type="password" id="pw" /></p>
+        <input type="submit" value="登录" class="subBtn" onclick="login()" />
+    </fieldset>
+</form>
+<script src="${basePath}/resources/js/login.js"></script>
+<script type="text/javascript">
+    function test() {
+        var testa = "{hai_username}"
+        alert(a)
+    }
+
+</script>
+</body>
