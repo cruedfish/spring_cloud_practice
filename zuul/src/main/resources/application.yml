@@ -10,7 +10,8 @@ zuul:
     cart:
       path: /cart/**
       serviceId: cart
-
+      path: /guoauth2/**
+      serviceId: guoauth2
 eureka:
   instance:
     status-page-url: http://localhost:${server.port}/swagger-ui.html

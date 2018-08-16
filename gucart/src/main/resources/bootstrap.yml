@@ -26,3 +26,8 @@ eureka:
     serviceUrl:
       defaultZone: ${eureka.serviceUrl:http://127.0.0.1:7001/eureka/}
 
+security:
+  oauth2:
+    resource:
+      id: cart
+      prefer-token-info: false

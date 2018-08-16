@@ -6,6 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
@@ -13,6 +14,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableZuulProxy
 @EnableScheduling
 @EnableFeignClients
+@ComponentScan(basePackages = {"com.giveu.guauth"})
 public class ZuulApplication {
 
 	public static void main(String[] args)

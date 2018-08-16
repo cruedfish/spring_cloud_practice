@@ -17,6 +17,7 @@
         <module>../zuul</module>
         <module>../guauth</module>
         <module>../gucommon</module>
+        <module>../guoauth2</module>
     </modules>
 
     <name>gustore1</name>

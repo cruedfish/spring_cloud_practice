@@ -99,21 +99,6 @@
     <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper:4.1.6" level="project" />
     <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:0.9.5" level="project" />
     <orderEntry type="module" module-name="gucart" />
-    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-spring-boot-starter:1.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-spring:1.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-core:1.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-crypto-hash:1.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-crypto-core:1.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-crypto-cipher:1.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-config-core:1.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-config-ogdl:1.4.0" level="project" />
-    <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.9.3" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-event:1.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-web:1.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-ehcache:1.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-cache:1.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-lang:1.4.0" level="project" />
-    <orderEntry type="library" name="Maven: net.sf.ehcache:ehcache-core:2.6.11" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:2.0.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-json:2.0.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.9.5" level="project" />
@@ -214,7 +199,7 @@
     <orderEntry type="library" name="Maven: io.netty:netty-transport-native-unix-common:4.1.23.Final" level="project" />
     <orderEntry type="library" name="Maven: com.netflix.ribbon:ribbon-core:2.2.5" level="project" />
     <orderEntry type="library" name="Maven: com.netflix.ribbon:ribbon-httpclient:2.2.5" level="project" />
-    <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: commons-collections:commons-collections:3.2.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.netflix.netflix-commons:netflix-commons-util:0.3.0" level="project" />
     <orderEntry type="library" name="Maven: com.netflix.ribbon:ribbon-loadbalancer:2.2.5" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.netflix.netflix-commons:netflix-statistics:0.1.1" level="project" />
