@@ -1,4 +1,4 @@
-package com.giveu.guauth.entity;
+package com.giveu.gucommon.entity;
 
 
 
@@ -17,7 +17,7 @@ import java.math.BigInteger;
  * @Date: Created in ${time} ${Date}
  */
 @TableName(value = "cs_user")
-public class User extends Model<User> {
+public class sysUser extends Model<sysUser> {
     private static final long serialVersionUID = 1L;
 
     @TableId("ID")

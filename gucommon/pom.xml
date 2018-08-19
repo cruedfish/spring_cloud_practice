@@ -39,11 +39,6 @@
 		</dependency>
 		<dependency>
 			<groupId>com.giveu</groupId>
-			<artifactId>guauth</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.giveu</groupId>
 			<artifactId>gucart</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

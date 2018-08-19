@@ -2,7 +2,7 @@ package com.giveu.gucommon.mapper;
 
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.giveu.gucommon.entity.User;
+import com.giveu.gucommon.entity.sysUser;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -11,7 +11,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @Date: Created in ${time} ${Date}
  */
 @Mapper
-public interface UserMapper extends BaseMapper<User> {
-
+public interface UserMapper extends BaseMapper<sysUser> {
 
 }

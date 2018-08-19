@@ -1,6 +1,6 @@
 package com.giveu.zuul;
 
-import com.giveu.guauth.mapper.UserMapper;
+import com.giveu.gucommon.mapper.UserMapper;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;

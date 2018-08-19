@@ -1,18 +1,18 @@
 package com.giveu.guauth;
 
 import com.alibaba.fastjson.JSONObject;
-import com.giveu.guauth.entity.TokenSubject;
-import com.giveu.guauth.entity.User;
-import com.giveu.guauth.mapper.TokenSubjectMapper;
-import com.giveu.guauth.mapper.UserMapper;
+import com.giveu.gucommon.entity.TokenSubject;
+import com.giveu.gucommon.mapper.TokenSubjectMapper;
+import com.giveu.gucommon.mapper.UserMapper;
 import com.haistore.redis.HaiResult;
 import com.haistore.redis.JWTUtils;
 import com.haistore.redis.MD5Util;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
